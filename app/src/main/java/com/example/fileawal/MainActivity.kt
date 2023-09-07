@@ -8,27 +8,31 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.fileawal.databinding.ActivityMainBinding
 import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var edtLength: TextInputLayout
-    private lateinit var edtWidth: TextInputLayout
-    private lateinit var edtHeight: TextInputLayout
-    private lateinit var btnResult: Button
+    lateinit var edtLength: TextInputLayout
+    lateinit var edtWidth: TextInputLayout
+    lateinit var edtHeight: TextInputLayout
+    lateinit var btnResult: Button
     lateinit var btnResultIntent: Button
-    private lateinit var tvResult: TextView
+    lateinit var tvResult: TextView
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
-        setContentView(R.layout.activity_main)
 
-        edtLength = findViewById(R.id.edt_length)
-        edtWidth = findViewById(R.id.edt_width)
-        edtHeight = findViewById(R.id.edt_height)
-        btnResult = findViewById(R.id.btn_result)
-        btnResultIntent = findViewById(R.id.btn_result_intent)
-        tvResult = findViewById(R.id.tv_result)
+        installSplashScreen()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        edtLength = binding.edtLength
+        edtWidth = binding.edtWidth
+        edtHeight = binding.edtHeight
+        btnResult = binding.btnResult
+        btnResultIntent = binding.btnResultIntent
+        tvResult = binding.tvResult
 
         btnResult.setOnClickListener(this)
         btnResultIntent.setOnClickListener(this)
